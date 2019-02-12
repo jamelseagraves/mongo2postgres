@@ -17,7 +17,7 @@ function migrateMetadata(client, users, index) {
 			client.end();
 			return console.log('Done!');
 		}
-		migrateMetadata(client, users, index+1);\
+		migrateMetadata(client, users, index+1);
 	});
 }
 
@@ -28,6 +28,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 	const query = { zoneId: 'kcm' };
 	db.collection(constants.MONGO_COLLECTION_NAME).find(query).toArray((err, result) => {
 		if (err) throw err;
+		console.log('Number of users: ' + result.length);
 		pgClient.connect()
 			.then(() => {
 				console.log('Connected to postgres database');
