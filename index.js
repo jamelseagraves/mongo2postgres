@@ -11,14 +11,13 @@ const pgPool = new Pool({
     connectionTimeoutMillis: 2000
 });
 
-MongoClient.connect(url, (err, client) => {
+MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 	if (err) throw err;
 	const db = client.db(constants.PG_DB_NAME);
 	const query = { zoneId: 'kcm' };
 	db.collection(constants.MONGO_COLLECTION_NAME).find(query).toArray((err, result) => {
 		if (err) throw err;
-		console.log(result[0]);
-		console.log(result.length);
+		console.log(result);
 		client.close();
 	});
 });
