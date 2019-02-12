@@ -18,6 +18,7 @@ MongoClient.connect(url, (err, client) => {
 	db.collection(constants.MONGO_COLLECTION_NAME).find(query).toArray((err, result) => {
 		if (err) throw err;
 		console.log(result[0]);
+		console.log(result.length);
 		client.close();
 	});
 });
