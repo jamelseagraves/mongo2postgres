@@ -1,0 +1,23 @@
+{
+  "name": "mongo2postgres",
+  "version": "1.0.0",
+  "description": "This tool migrates data from MongoDB to a Postgres database.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamelseagraves/mongo2postgres.git"
+  },
+  "author": "Jamel Seagraves",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jamelseagraves/mongo2postgres/issues"
+  },
+  "homepage": "https://github.com/jamelseagraves/mongo2postgres#readme",
+  "dependencies": {
+    "mongodb": "^3.1.13",
+    "pg": "^7.8.0"
+  }
+}
