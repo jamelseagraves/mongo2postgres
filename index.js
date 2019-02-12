@@ -1,6 +1,6 @@
 const constants = require('./constants');
 const { MongoClient } = require('mongodb');
-const { Client } = require('pg');
+const { Pool } = require('pg');
 const url = 'mongodb://'+constants.MONGO_HOST+':'+constants.MONGO_PORT;
 const pgPool = new Pool({
 	user: constants.PG_USERNAME,
