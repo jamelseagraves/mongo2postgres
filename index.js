@@ -32,7 +32,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 			.then(() => {
 				console.log('Connected to postgres database');
 				migrateMetadata(pgClient, result, 0);
-				pgClient.end();
 			})
 			.catch(e => {
 				console.error(e);
