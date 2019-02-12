@@ -28,11 +28,15 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 	const query = { zoneId: 'kcm' };
 	db.collection(constants.MONGO_COLLECTION_NAME).find(query).toArray((err, result) => {
 		if (err) throw err;
-		pgClient.connect().then(() => {
-			console.log('Connected to postgres database');
-		// migrateMetadata(pgClient, result, 0);
-			pgClient.end();
-		});
+		pgClient.connect()
+			.then(() => {
+				console.log('Connected to postgres database');
+			// migrateMetadata(pgClient, result, 0);
+				pgClient.end();
+			})
+			.catch(e => {
+				console.error(e);
+			});
 		client.close();
 		console.log('Closed mongo client');
 	});
