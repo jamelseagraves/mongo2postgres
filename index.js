@@ -11,7 +11,8 @@ const pgClient = new Client({
 });
 
 function migrateMetadata(client, users, index) {
-	client.query('UPDATE users SET metadata = '+ JSON.stringify(users[index].metadata) +'WHERE id = ' + users[index]._id, (err, result) => {
+	console.log(users[index].metadata);
+	client.query('UPDATE users SET metadata = '+ users[index].metadata +'WHERE id = ' + users[index]._id, (err, result) => {
 		if (err) throw err;
 		if (index >= 1) {
 			client.end();
