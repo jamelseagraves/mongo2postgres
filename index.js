@@ -11,8 +11,8 @@ const pgClient = new Client({
 });
 
 function migrateMetadata(client, users, index) {
-	console.log(JSON.stringify(users[index].metadata.replace(/["]/g, '\"')));
-	client.query(`UPDATE users SET metadata = {"isWheelChairRequired":false,"isPnaRequired":false,"needsDescription":"","orcaSerialNumber":"","orcaVerificationNumber":"","rideCompleted":0,"surveyCompleted":0} WHERE id = ${users[index]._id}`, (err, result) => {
+	console.log(JSON.stringify(users[index].metadata));
+	client.query('UPDATE users SET metadata = $1 WHERE id = $2', [JSON.stringify(users[index].metadata), users[index]._id], (err, result) => {
 		if (err) throw err;
 		if (index >= 1) {
 			client.end();
