@@ -5,10 +5,12 @@ function define(name, value) {
     });
 }
 
+define('MONGO_HOST', process.env.MONGOHOST || 'localhost');
+define('MONGO_PORT', process.env.MONGOPORT || 27017);
 define('MONGO_DB_NAME', process.env.MONGODB || 'local');
 define('MONGO_COLLECTION_NAME', process.env.MONGOCOLLECTION || 'me');
 define('PG_DB_NAME', process.env.PGDATABASE || 'postgres');
-define('USERNAME', process.env.PGUSER || 'postgres');
-define('PASSWORD', process.env.PGPASSWORD || null);
-define('HOST', process.env.PGHOST || 'localhost');
-define('PORT', process.env.PGPORT || 5432);
+define('PG_USERNAME', process.env.PGUSER || 'postgres');
+define('PG_PASSWORD', process.env.PGPASSWORD || null);
+define('PG_HOST', process.env.PGHOST || 'localhost');
+define('PG_PORT', process.env.PGPORT || 5432);

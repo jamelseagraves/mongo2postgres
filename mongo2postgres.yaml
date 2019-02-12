@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mongo2postgres
+spec:
+  template:
+    metadata:
+      name: mongo2postgres
+    spec:
+      containers:
+      - name: mongo2postgres
+        image: node:11.9.0
+        env:
+        - name: "MONGOHOST"
+          value: "mongo-0"
+        - name: "MONGODB"
+          value: "umdb"
+        - name: "MONGOCOLLECTION"
+          value: "users"
+        - name: "PGDATABASE"
+          value: "uaa"
+        - name: "PGUSER"
+          value: "uaa"
+        - name: "PGPASSWORD"
+          value: "uaa"
+        - name: "PGHOST"
+          value: "postgres-0"
+        command: ["/bin/bash", "-c", "git clone https://b07ae6cc43f48f6ab220cb692f1bf45c0f2f6df4@github.com:jamelseagraves/mongo2postgres.git && cd mongo2postgres && npm install && node index.js"]
+      restartPolicy: Never
