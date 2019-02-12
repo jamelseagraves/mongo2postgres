@@ -14,9 +14,10 @@ const pgPool = new Pool({
 MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 	if (err) throw err;
 	const db = client.db(constants.PG_DB_NAME);
-	const query = { zoneId: 'kcm' };
+	const query = { zoneId: "kcm" };
 	db.collection(constants.MONGO_COLLECTION_NAME).find(query).toArray((err, result) => {
 		if (err) throw err;
+		console.log(constants.MONGO_COLLECTION_NAME);
 		console.log(result);
 		client.close();
 	});
