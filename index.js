@@ -29,6 +29,14 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
 	const query = { zoneId: 'kcm' };
 	db.collection(constants.MONGO_COLLECTION_NAME).find(query).toArray((err, result) => {
 		if (err) throw err;
+		console.log(JSON.stringify({
+			user: constants.PG_USERNAME,
+			password: constants.PG_PASSWORD,
+			host: constants.PG_HOST,
+		    port: constants.PG_PORT,
+		    database: constants.PG_DB_NAME,
+		    connectionTimeoutMillis: 2000
+		}));
 		pgPool.connect((err, client, release) => {
 			if (err) throw err;
 			console.log('Connected to postgres database');
